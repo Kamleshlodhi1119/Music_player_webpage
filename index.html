@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Player</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 0 10px;
+      background-color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+    }
+
+    button:hover {
+      background-color: #eaeaea;
+    }
+
+    button:active {
+      transform: translateY(2px);
+    }
+
+    .button-animation {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #ff9f00;
+      opacity: 0;
+      animation: pulse 1.5s linear infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin-top: 50px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Music Player</h1>
+    <audio id="audio-player" src=""></audio>
+    <div class="controls">
+      <button id="play-btn" class="button-animation" onclick="playMusic()">Play</button>
+      <button id="pause-btn" onclick="pauseMusic()">Pause</button>
+      <button id="skip-btn" onclick="skipMusic()">Skip</button>
+    </div>
+  </div>
+  <script>
+    const audioPlayer = document.getElementById('audio-player');
+    const playButton = document.getElementById('play-btn');
+    const pauseButton = document.getElementById('pause-btn');
+    const skipButton = document.getElementById('skip-btn');
+
+    function playMusic() {
+      audioPlayer.play();
+    }
+
+    function pauseMusic() {
+      audioPlayer.pause();
+    }
+
+    function skipMusic() {
+      // Implement logic to skip to the next track
+      // For simplicity, we'll just stop the audio for this example
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0; // Reset the audio to the beginning
+    }
+  </script>
+</body>
+</html>
